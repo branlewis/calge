@@ -1,0 +1,5 @@
+<li {% if active_link == "home" %}class="active"{% endif %}><a href="{% url 'home' %}">Home</a></li>
+<li {% if active_link == "about" %}class="active"{% endif %}><a href="{% url 'about' %}">About the Site</a></li>
+{% if user.is_authenticated %}
+    <li {% if active_link == "clock/me" %}class="active"{% endif %}><a href="{% url 'clock:timeCard' %}">Time Clock</a></li>
+{% endif %}

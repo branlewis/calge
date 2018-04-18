@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Welcome to your time punch page{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="clock/me" %}
+{% endblock %}
+
+{% block container %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      </br></br><h2> Your Timecard </h2>
+      <form method="post">
+        {% csrf_token %}
+        {% if show_todayShift %}
+          <p>You checked in at {{ show_todayShift.timeIn }}</p>
+          <button type="submit" name="timeOutbtn">Clock Out</button></br></br>
+        {% else %}
+          <button type="submit" name="timeInbtn">Clock In</button></br></br>
+        {% endif %}
+      </form>
+      <ul>
+        {%for shift in show_userShifts %}
+          <li>{{ shift.date }}: {{ shift.timeIn }}-{{ shift.timeOut }}</li>
+        {%endfor%}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Home{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="home" %}
+{% endblock %}
+
+{% block navbar-right %}
+  {% if not user.is_authenticated %}
+  <a class="btn btn-default" href="{% url 'accounts:login' %}" role="button">Log in</a>
+  <a class="btn btn-primary" href="{% url 'accounts:signup' %}" role="button">Sign up</a>
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block splash %}
+  <div class="jumbotron jumbotron-carousel corporate-jumbo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-8">
+          <h1>{% include "_brandname.html" %}</h1>
+          <p>Welcome to the program, have a great time</p>
+	  <a class="btn btn-primary" href="{% url 'accounts:signup' %}" role="button">Sign up for your first day!</a>
+        </div>
+        <div class="col-md-4 col-sm-4">
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock splash %}
+
+{% block container %}
+<!-- Benefits of the Django application -->
+<a name="about"></a>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <h2>CalGE</h2>
+      <p>The California Institute for Global Education believes in the power and impact of education. We believe in a world where all students, in all nations, have equal access to the highest quality education experience. CalGE is a registered 501(c)(3)</p>
+      <p><a class="btn btn-primary" href="https://www.calge.org/" role="button">Visit Our Main Site &raquo;</a></p>
+    </div>
+    <div class="col-lg-4">
+      <h2>About This Page</h2>
+      <p>This page was built by a group of student from CSU Monterrey Bay participating in their Service Learning Project where they were able to Partner with CalGE.</p>
+      <p><a class="btn btn-primary" href="{% url 'about' %}" role="button">Learn More &raquo;</a></p>
+    </div>
+    <div class="col-lg-4">
+      <h2>An International Perspective</h2>
+      <p>CalGE connects learners to high quality education opportunities in high school and colleges in the United States and abroad. CalGE plays a crucial role in increasing students' awareness of cultures and societies outside of national boundaries.</p>
+    </div>
+  </div>
+</div>
+
+{% endblock container %}
+
+{% block scripts %}
+<script src="{% static 'site/js/site.js' %}"></script>
+{% endblock scripts %}
