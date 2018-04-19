@@ -1,16 +1,13 @@
 
 
+
 # my_proj
 
-my_proj is a _short description_. It is built with [Python][0] using the [Django Web Framework][1].
+my_proj is a website created for CalGE by students as CSUMB. It is built with Python 3 using the Django Web Framework.
 
-This project has the following basic apps:
-
-* App1 (short desc)
-* App2 (short desc)
-* App3 (short desc)
-
-## Installation
+This project contains:
+a user login/singup page as well as a profile customization page.
+a simple time keeping system with in and out punches.
 
 ### Quick start
 
